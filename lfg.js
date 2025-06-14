@@ -47,6 +47,8 @@ module.exports = {
                 .addChoices(
                     { name: 'EU', value: 'EU' },
                     { name: 'US-East', value: 'USE' },
+                    { name: 'US-West', value: 'USW' },
+                    { name: 'Middle-East', value: 'MENA' },
                     { name: 'Other', value: 'Other' }
                 ))
         .addStringOption(option =>
@@ -109,9 +111,10 @@ module.exports = {
         const colorKey = Object.keys(rankColors).find(key => rank.includes(key)) || 'Champion';
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `${interaction.member.displayName} caută echipă!` })
+            .setAuthor({ name: `${interaction.user.username} caută echipă!`, iconURL: interaction.user.displayAvatarURL() })
             .setColor(rankColors[colorKey])
             .setDescription(
+                `<@${interaction.user.id}> caută echipă!\n\n` +
                 `- 🖥️ Platformă: \`${platform}\`\n` +
                 `- 🌍 Regiune: \`${region}\`\n` +
                 `- 🎮 Mod de joc: \`${playlist}\`\n` +
