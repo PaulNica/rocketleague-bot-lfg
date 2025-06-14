@@ -123,7 +123,10 @@ module.exports = {
         const colorKey = Object.keys(rankColors).find(key => rank.includes(key)) || 'Champion';
 
         const embed = new EmbedBuilder()
-            .setAuthor({ iconURL: interaction.user.displayAvatarURL() })
+            .setAuthor({
+                name: ' ', // invisible
+                iconURL: interaction.user.displayAvatarURL()
+            })
             .setColor(rankColors[colorKey])
             .setDescription(
                 `<@${interaction.user.id}> caută echipă!\n\n` +
