@@ -47,8 +47,11 @@ module.exports = {
                 .addChoices(
                     { name: 'EU', value: 'EU' },
                     { name: 'US-East', value: 'USE' },
-                    { name: 'US-West', value: 'USW' },
-                    { name: 'Middle-East', value: 'MENA' },
+                    { name: 'US-West', value: 'US-West' },
+                    { name: 'Middle East', value: 'Middle East' },
+                    { name: 'Asia', value: 'Asia' },
+                    { name: 'Oceania', value: 'Oceania' },
+                    { name: 'Africa', value: 'Africa' },
                     { name: 'Other', value: 'Other' }
                 ))
         .addStringOption(option =>
@@ -111,7 +114,7 @@ module.exports = {
         const colorKey = Object.keys(rankColors).find(key => rank.includes(key)) || 'Champion';
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `${interaction.user.username} caută echipă!`, iconURL: interaction.user.displayAvatarURL() })
+            setAuthor({ iconURL: interaction.user.displayAvatarURL() })
             .setColor(rankColors[colorKey])
             .setDescription(
                 `<@${interaction.user.id}> caută echipă!\n\n` +
