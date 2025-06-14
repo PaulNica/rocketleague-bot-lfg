@@ -23,5 +23,16 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+client.on('messageCreate', message => {
+    const allowedChannel = '1380523074386001921'; // <-- replace with your real LFG channel ID
+    const isCommand = message.content.startsWith('/');
+    const isBot = message.author.bot;
+
+    if (message.channel.id === allowedChannel && !isCommand && !isBot) {
+        message.delete().catch(() => {});
+    }
+});
+
+
 console.log("Using token:", process.env.BOT_TOKEN);
 client.login(process.env.BOT_TOKEN);
