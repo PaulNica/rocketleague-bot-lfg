@@ -24,12 +24,12 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.on('messageCreate', message => {
-    const allowedChannel = '1380523074386001921'; // <-- replace with your real LFG channel ID
-    const isCommand = message.content.startsWith('/');
+    const allowedChannel = '1380523074386001921'; // your real LFG channel ID
     const isBot = message.author.bot;
+    const isSlashCommand = message.interaction !== null;
 
-    if (message.channel.id === allowedChannel && !isCommand && !isBot) {
-        message.delete().catch(() => {});
+    if (message.channel.id === allowedChannel && !isBot && !isSlashCommand) {
+        message.delete().catch(console.error);
     }
 });
 
