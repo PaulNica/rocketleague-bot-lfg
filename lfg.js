@@ -104,6 +104,15 @@ module.exports = {
                 )),
 
     async execute(interaction) {
+        
+        const allowedChannelId = '1380523074386001921';
+        if (interaction.channelId !== allowedChannelId) {
+            return interaction.reply({
+                content: `Această comandă poate fi folosită doar în <#${allowedChannelId}>.`,
+                ephemeral: true
+            });
+    }
+
         const platform = interaction.options.getString('platform');
         const players = interaction.options.getInteger('players');
         const region = interaction.options.getString('region');
@@ -114,7 +123,7 @@ module.exports = {
         const colorKey = Object.keys(rankColors).find(key => rank.includes(key)) || 'Champion';
 
         const embed = new EmbedBuilder()
-            setAuthor({ iconURL: interaction.user.displayAvatarURL() })
+            .setAuthor({ iconURL: interaction.user.displayAvatarURL() })
             .setColor(rankColors[colorKey])
             .setDescription(
                 `<@${interaction.user.id}> caută echipă!\n\n` +
